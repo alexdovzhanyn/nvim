@@ -91,7 +91,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
-vim.g.have_nerd_font = false
+vim.g.have_nerd_font = true
 
 -- [[ Setting options ]]
 -- See `:help vim.opt`
@@ -358,7 +358,18 @@ require('lazy').setup({
         --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
         --   },
         -- },
-        -- pickers = {}
+        pickers = {
+          find_files = {
+            hidden = true,
+          },
+        },
+        defaults = {
+          file_ignore_patterns = {
+            'node_modules',
+            'dist',
+            'lib',
+          },
+        },
         extensions = {
           ['ui-select'] = {
             require('telescope.themes').get_dropdown(),
@@ -472,7 +483,7 @@ require('lazy').setup({
           map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
 
           -- Find references for the word under your cursor.
-          map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
+          map('ge', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
 
           -- Jump to the implementation of the word under your cursor.
           --  Useful when your language has ways of declaring types without an actual implementation.
@@ -565,7 +576,7 @@ require('lazy').setup({
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
-        -- clangd = {},
+        clangd = {},
         -- gopls = {},
         -- pyright = {},
         -- rust_analyzer = {},
@@ -575,7 +586,7 @@ require('lazy').setup({
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`tsserver`) will work just fine
-        -- tsserver = {},
+        tsserver = {},
         --
 
         lua_ls = {
@@ -874,9 +885,9 @@ require('lazy').setup({
   --  Uncomment any of the lines below to enable them (you will need to restart nvim).
   --
   -- require 'kickstart.plugins.debug',
-  -- require 'kickstart.plugins.indent_line',
+  require 'kickstart.plugins.indent_line',
   -- require 'kickstart.plugins.lint',
-  -- require 'kickstart.plugins.autopairs',
+  require 'kickstart.plugins.autopairs',
   -- require 'kickstart.plugins.neo-tree',
   -- require 'kickstart.plugins.gitsigns', -- adds gitsigns recommend keymaps
 
