@@ -48,6 +48,8 @@ return {
       }
       vim.cmd.colorscheme 'dracula'
       vim.cmd.colorscheme 'dracula-soft'
+      -- Set the background color of Nvim tree to be transparent since it doesnt seem to work in the color scheme
+      vim.api.nvim_set_hl(0, 'NvimTreeNormal', { fg = 'NONE', bg = 'NONE' })
     end,
   },
   {

@@ -107,6 +107,9 @@ vim.opt.number = true
 -- Enable mouse mode, can be useful for resizing splits for example!
 vim.opt.mouse = 'a'
 
+-- Enable 24 bit color
+vim.opt.termguicolors = true
+
 -- Don't show the mode, since it's already in the status line
 vim.opt.showmode = false
 
@@ -153,6 +156,9 @@ vim.opt.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
+
+-- Make vim source our ~/.bashrc
+vim.opt.shell = 'bash -i'
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
