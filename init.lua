@@ -366,7 +366,13 @@ require('lazy').setup({
         -- },
         pickers = {
           find_files = {
-            hidden = true,
+            layout_strategy = 'vertical',
+            layout_config = {
+              vertical = {
+                preview_height = 0.75,
+                results_height = 0.25,
+              },
+            },
           },
         },
         defaults = {
