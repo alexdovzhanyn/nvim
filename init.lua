@@ -374,13 +374,18 @@ require('lazy').setup({
               },
             },
           },
+          live_grep = {
+            layout_strategy = 'vertical',
+            layout_config = {
+              vertical = {
+                preview_height = 0.75,
+                results_height = 0.25,
+              },
+            },
+          },
         },
         defaults = {
-          file_ignore_patterns = {
-            'node_modules',
-            'dist',
-            'lib',
-          },
+          file_ignore_patterns = {},
         },
         extensions = {
           ['ui-select'] = {
