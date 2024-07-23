@@ -635,6 +635,7 @@ require('lazy').setup({
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
+        'eslint_d',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -674,12 +675,16 @@ require('lazy').setup({
         -- languages here or re-enable it for the disabled ones.
         local disable_filetypes = { c = true, cpp = true }
         return {
-          timeout_ms = 500,
+          timeout_ms = 1000,
           lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
         }
       end,
       formatters_by_ft = {
         lua = { 'stylua' },
+        javascript = { 'eslint_d' },
+        typescript = { 'eslint_d' },
+        javascriptreact = { 'eslint_d' },
+        typescriptreact = { 'eslint_d' },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --
