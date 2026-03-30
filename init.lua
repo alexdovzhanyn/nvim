@@ -226,6 +226,13 @@ if not vim.loop.fs_stat(lazypath) then
 end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
+vim.filetype.add {
+  extension = {
+    vert = 'glsl',
+    frag = 'glsl',
+  },
+}
+
 -- [[ Configure and install plugins ]]
 --
 --  To check the current status of your plugins, run
@@ -670,6 +677,14 @@ require('lazy').setup({
             -- by the server configuration above. Useful when disabling
             -- certain features of an LSP (for example, turning off formatting for tsserver)
             server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
+
+            if server_name == 'jdtls' then
+              server.on_attach = function(client, bufnr)
+                client.server_capabilities.documentFormattingProvider = false
+                client.server_capabilities.documentRangeFormattingProvider = false
+              end
+            end
+
             require('lspconfig')[server_name].setup(server)
           end,
         },
@@ -696,7 +711,7 @@ require('lazy').setup({
         -- Disable "format_on_save lsp_fallback" for languages that don't
         -- have a well standardized coding style. You can add additional
         -- languages here or re-enable it for the disabled ones.
-        local disable_filetypes = { c = true, cpp = true }
+        local disable_filetypes = { c = true, cpp = true, java = true }
         return {
           timeout_ms = 1000,
           lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
