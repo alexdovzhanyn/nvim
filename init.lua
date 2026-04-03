@@ -260,6 +260,7 @@ require('lazy').setup({
 
   -- "gc" to comment visual regions/lines
   { 'numToStr/Comment.nvim', opts = {} },
+  { 'sindrets/diffview.nvim', opts = {} },
 
   -- Here is a more advanced example where we pass configuration
   -- options to `gitsigns.nvim`. This is equivalent to the following Lua:
@@ -395,6 +396,8 @@ require('lazy').setup({
                 results_height = 0.25,
               },
             },
+            no_ignore = true,
+            hidden = true,
           },
           live_grep = {
             layout_strategy = 'vertical',
@@ -407,7 +410,7 @@ require('lazy').setup({
           },
         },
         defaults = {
-          file_ignore_patterns = {},
+          file_ignore_patterns = { '%.git/', 'node_modules' },
         },
         extensions = {
           ['ui-select'] = {

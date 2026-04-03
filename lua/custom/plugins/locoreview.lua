@@ -5,8 +5,9 @@ return {
     { 'sindrets/diffview.nvim', optional = true },
   },
   opts = {
-    review_file = 'review.md',
+    review_file = '.cursor/review.md',
     default_severity = 'medium',
+    default_author = 'Alex Dovzhanyn',
     diffview = { enabled = true },
     signs = { enabled = true, priority = 20 },
     picker = { enabled = true, backend = 'auto' },
